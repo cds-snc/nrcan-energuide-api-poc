@@ -5,6 +5,7 @@ import { NavLink } from 'redux-first-router-link'
 import Breadcrumbs from './Breadcrumbs'
 import FieldSet from './forms/FieldSet'
 import Radio from './forms/Radio'
+import Button from './forms/Button'
 import InfoIcon from './InfoIcon'
 import { connect } from 'react-redux'
 import { compose, withApollo } from 'react-apollo'
@@ -88,9 +89,9 @@ class Search extends Component {
                 </abbr>
               </Radio>
             </FieldSet>
-            <button type="submit" disabled={pristine || submitting}>
+            <Button disabled={pristine || submitting}>
               <Trans>Search</Trans>
-            </button>
+            </Button>
           </form>
 
           <aside>
