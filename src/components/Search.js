@@ -74,16 +74,26 @@ class Search extends Component {
             onSubmit={handleSubmit(this.handleFormData)}
             aria-labelledby="search-by-description"
           >
-            <FieldSet name="searchBy">
+            <FieldSet>
               <legend id="search-by-description">
                 <Trans>Search by Location or File number</Trans>
               </legend>
-              <Radio label={<Trans>Location</Trans>} value="location">
+              <Radio
+                label={<Trans>Location</Trans>}
+                value="location"
+                name="searchBy"
+                id="searchBy-0"
+              >
                 <abbr title="A location refers to a region or neighbourhood. You will be searching by the first three digits of any postal code.">
                   <InfoIcon />
                 </abbr>
               </Radio>
-              <Radio label={<Trans>File number</Trans>} value="file-number">
+              <Radio
+                label={<Trans>File number</Trans>}
+                value="file-number"
+                name="searchBy"
+                id="searchBy-1"
+              >
                 <abbr title="A file number refers to an individual home. This number is provided to the homeowner through EnerGuide.">
                   <InfoIcon />
                 </abbr>
