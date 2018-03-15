@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { NavLink } from 'redux-first-router-link'
 import Breadcrumbs from './Breadcrumbs'
 import FieldSet from './forms/FieldSet'
 import Radio from './forms/Radio'
 import InfoIcon from './InfoIcon'
-import Button from './forms/Button'
 import { connect } from 'react-redux'
 import { compose, withApollo } from 'react-apollo'
 import { Trans } from 'lingui-react'
@@ -74,36 +73,20 @@ class Search extends Component {
             onSubmit={handleSubmit(this.handleFormData)}
             aria-labelledby="search-by-description"
           >
-            <FieldSet name="search">
+            <FieldSet name="searchBy">
               <legend id="search-by-description">
                 <Trans>Search by Location or File number</Trans>
               </legend>
-              <Field
-                id="search-by-1"
-                name="searchBy"
-                component="input"
-                type="radio"
-                value="location"
-              />
-              <label htmlFor="search-by-1">
-                <Trans>Location&nbsp;</Trans>
+              <Radio label={<Trans>Location</Trans>} value="location">
                 <abbr title="A location refers to a region or neighbourhood. You will be searching by the first three digits of any postal code.">
                   <InfoIcon />
                 </abbr>
-              </label>
-              <Field
-                id="search-by-2"
-                name="searchBy"
-                component="input"
-                type="radio"
-                value="file-number"
-              />
-              <label htmlFor="search-by-2">
-                <Trans>File number&nbsp;</Trans>
+              </Radio>
+              <Radio label={<Trans>File number</Trans>} value="file-number">
                 <abbr title="A file number refers to an individual home. This number is provided to the homeowner through EnerGuide.">
                   <InfoIcon />
                 </abbr>
-              </label>
+              </Radio>
             </FieldSet>
             <button type="submit" disabled={pristine || submitting}>
               <Trans>Search</Trans>
