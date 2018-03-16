@@ -11,11 +11,25 @@ import { connect } from 'react-redux'
 import { compose, withApollo } from 'react-apollo'
 import { Trans } from 'lingui-react'
 import { css } from 'react-emotion'
-import { spacing } from './styles'
+import { colours, fontSizes, roundedEdges, spacing } from './styles'
 
 const main = css`
   form {
     margin-bottom: ${spacing.xl}px;
+  }
+`
+
+const text_input = css`
+  font-size: ${fontSizes.md};
+  border: 3px solid ${colours.grey}};
+  outline: 0;
+  padding: ${spacing.sm}px;
+  width: 300px;
+  ${roundedEdges};
+
+  &:focus {
+    outline: 3px solid ${colours.focus};
+    outline-offset: 0px;
   }
 `
 
@@ -99,6 +113,26 @@ class Search extends Component {
                 </abbr>
               </Radio>
             </FieldSet>
+            <h2>
+              <label htmlFor="location" id="location-label">
+                <Trans>Location</Trans>
+              </label>
+            </h2>
+            <p id="location-details">
+              <Trans>
+                Search for a region by submitting the first three digits of a
+                postal code.
+              </Trans>
+            </p>
+            <input
+              type="text"
+              name="location-1"
+              id="location-1"
+              aria-labelledby="location-label location-details"
+              className={text_input}
+            />
+            <hr />
+
             <Button disabled={pristine || submitting}>
               <Trans>Search</Trans>
             </Button>
