@@ -24,7 +24,7 @@ const Home = () => (
           <Trans>Natural Resources Canada</Trans>
         </h2>
         <h1>
-          <Trans>EnerGuide API</Trans>
+          <Trans>EnerGuide Website</Trans>
         </h1>
       </div>
 
