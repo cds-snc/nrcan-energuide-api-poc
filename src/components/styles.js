@@ -1,58 +1,9 @@
 import { css } from 'react-emotion'
 import styled from 'react-emotion'
 
-export const spacingBase = 16
-export const spacing = {
-  md: spacingBase,
-  sm: spacingBase / 2,
-  xs: spacingBase / 3,
-  xxs: spacingBase / 6,
-  lg: parseInt(spacingBase * 1.35),
-  xl: spacingBase * 2,
-  xxl: spacingBase * 3,
-  xxxl: spacingBase * 5,
-}
-
 export const fontFace = css`
   @import url(https://fontlibrary.org/face/hk-grotesk);
 `
-
-export const fontWeight = {
-  light: 'HKGroteskLight',
-  lightItal: 'HKGroteskLightItalic',
-  med: 'HKGroteskMedium',
-  medItal: 'HKGroteskMediumItalic',
-  reg: 'HKGroteskRegular',
-  semi: 'HKGroteskSemiBold',
-  bold: 'HKGroteskBold',
-  boldItal: 'HKGroteskSemiBoldItalic',
-}
-
-export const fontSizes = {
-  xs: '12px',
-  sm: '16px',
-  base: '20px',
-  md: '20px',
-  lg: '24px',
-  xl: '48px',
-}
-
-export const colours = {
-  yellow: '#FDD262',
-  yellowLight: '#E5BF73',
-  yellowDark: '#E7AE27',
-  blue: '#1177DD',
-  blueDark: '#073767',
-  blueAlpha: '#4A90E2',
-  red: '#A5071B',
-  grey: '#4A4A4A',
-  gray: '#4A4A4A',
-  greyLight: '#DBDBDB',
-  grayLight: '#DBDBDB',
-  white: '#FFFFFF',
-  black: '#000000',
-  focus: '#ffbf47',
-}
 
 const borderRadius = 2
 export const roundedEdges = css`
@@ -212,7 +163,9 @@ export const HeaderContainer = styled.div`
 `
 
 export const Section = styled.section`
-  margin-bottom: ${theme.spacingXlarge2}px;
+  margin-bottom: 0px;
+  padding-left: ${theme.spacingXlarge3}px;
+  padding-top: ${theme.spacingLarge}px;
   width: 70%;
   &:last-of-type {
     margin-bottom: 0;

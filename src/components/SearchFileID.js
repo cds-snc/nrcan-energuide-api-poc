@@ -7,6 +7,7 @@ import { compose, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Trans } from 'lingui-react'
 import { saveFileIdData } from '../actions'
+import { PageBody, Section } from './styles'
 
 class SearchFileID extends Component {
   static propTypes = {
@@ -65,7 +66,7 @@ class SearchFileID extends Component {
     let { data, handleSubmit, pristine, submitting } = this.props
     return (
       <main role="main">
-        <section>
+        <Section>
           <nav aria-label="Breadcrumb">
             <ol>
               <li>
@@ -85,9 +86,9 @@ class SearchFileID extends Component {
               </li>
             </ol>
           </nav>
-        </section>
+        </Section>
 
-        <div id="page-body">
+        <PageBody>
           <header>
             <h1 id="search-by-fileid-description">
               <Trans>Search by file ID</Trans>
@@ -129,7 +130,7 @@ class SearchFileID extends Component {
               <Trans>&nbsp;on GitHub.</Trans>
             </h3>
           </aside>
-        </div>
+        </PageBody>
       </main>
     )
   }

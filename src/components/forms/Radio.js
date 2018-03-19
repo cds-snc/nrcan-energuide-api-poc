@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import { css } from 'react-emotion'
-import { colours, fontSizes, spacing } from '../styles'
+import { theme } from '../styles'
 
 const govuk_multiple_choice = css`
   display: block;
@@ -130,8 +130,8 @@ const govuk_label_pseudo_elements = css`
 
 const radio = css`
   ${govuk_multiple_choice};
-  padding: 0 0 0 ${spacing.xl}px;
-  margin-bottom: ${spacing.sm}px;
+  padding: 0 0 0 ${theme.spacingXlarge}px;
+  margin-bottom: ${theme.spacingSmall}px;
 
   input {
     width: 24px;
@@ -140,15 +140,15 @@ const radio = css`
 
   label {
     padding: 0;
-    font-size: ${fontSizes.lg};
+    font-size: ${theme.fontLarge};
 
     span {
-      padding: 0 ${spacing.sm}px;
+      padding: 0 ${theme.spacingSmall}px;
     }
   }
 
   input[type='radio'] + label::before {
-    border: 2px solid ${colours.grey};
+    border: 2px solid ${theme.grey};
     width: 22px;
     height: 22px;
     top: 7px;
@@ -156,7 +156,7 @@ const radio = css`
   }
 
   input[type='radio'] + label::after {
-    border: 6px solid ${colours.blue};
+    border: 6px solid ${theme.blue};
     top: 12px;
     left: 7px;
   }

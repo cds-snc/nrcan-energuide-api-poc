@@ -9,6 +9,7 @@ import { Trans } from 'lingui-react'
 import DataTable from './DataTable'
 import { injectGlobal } from 'emotion'
 import { saveLocationData } from '../actions'
+import { Section, PageBody } from './styles'
 
 injectGlobal`
 .fixedDataTableCellGroupLayout_cellGroup {
@@ -477,7 +478,7 @@ class SearchLocation extends Component {
     let { data, handleSubmit, pristine, submitting } = this.props
     return (
       <main role="main">
-        <section>
+        <Section>
           <nav aria-label="Breadcrumb">
             <ol>
               <li>
@@ -497,9 +498,9 @@ class SearchLocation extends Component {
               </li>
             </ol>
           </nav>
-        </section>
+        </Section>
 
-        <div id="page-body">
+        <PageBody>
           <header>
             <h1 id="search-by-location-description">
               <Trans>Search by location</Trans>
@@ -583,7 +584,7 @@ class SearchLocation extends Component {
               <Trans>&nbsp;on GitHub.</Trans>
             </h3>
           </aside>
-        </div>
+        </PageBody>
       </main>
     )
   }

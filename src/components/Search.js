@@ -11,11 +11,11 @@ import { connect } from 'react-redux'
 import { compose, withApollo } from 'react-apollo'
 import { Trans } from 'lingui-react'
 import { css } from 'react-emotion'
-import { Header1, Header3, PageBody, spacing } from './styles'
+import { Header1, Header3, PageBody, theme } from './styles'
 
 const main = css`
   form {
-    margin-bottom: ${spacing.xxl}px;
+    margin-bottom: ${theme.spacingXlarge2}px;
   }
 `
 

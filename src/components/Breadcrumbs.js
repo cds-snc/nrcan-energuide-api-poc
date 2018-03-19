@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'react-emotion'
-import { colours, fontSizes, spacing } from './styles'
+import { theme } from './styles'
 
 const breadcrumb = css`
-  background-color: ${colours.greyLight};
-  padding: ${spacing.md}px ${spacing.xxxl}px;
+  background-color: ${theme.greyLight};
+  padding: ${theme.spacingMedium}px ${theme.spacingXlarge3}px;
 
   ol {
     max-width: 960px;
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: ${fontSizes.md};
+    font-size: ${theme.fontMedium};
 
     li {
       display: inline-block;
@@ -24,8 +24,8 @@ const breadcrumb = css`
 
     li:not(:last-child)::after {
       content: '>';
-      padding: 0 ${spacing.md}px;
-      color: ${colours.grey};
+      padding: 0 ${theme.spacingMedium}px;
+      color: ${theme.grey};
     }
   }
 `

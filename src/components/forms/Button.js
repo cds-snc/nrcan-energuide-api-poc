@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'react-emotion'
-import { colours, fontSizes, spacing, roundedEdges } from '../styles'
+import { theme, roundedEdges } from '../styles'
 
 const button = css`
-  font-size: ${fontSizes.md};
+  font-size: ${theme.fontMedium};
   font-weight: 700;
-  color: ${colours.white};
-  background-color: ${colours.blue};
+  color: ${theme.white};
+  background-color: ${theme.blue};
   border: 3px solid transparent;
   outline: 0;
-  padding: ${spacing.sm}px ${spacing.xl}px;
+  padding: ${theme.spacingSmall}px ${theme.spacingXlarge}px;
   cursor: pointer;
   ${roundedEdges};
 
   &:focus {
-    outline: 4px solid ${colours.focus};
+    outline: 4px solid ${theme.focus};
     outline-offset: -1px;
   }
 
   &:hover,
   &:active,
   &:focus {
-    background-color: ${colours.blueDark};
+    background-color: ${theme.blueDark};
   }
 
   &:active {

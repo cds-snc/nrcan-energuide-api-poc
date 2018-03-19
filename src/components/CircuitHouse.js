@@ -1,12 +1,12 @@
 import React from 'react'
 import { css } from 'react-emotion'
-import { mediaQuery, spacing } from './styles'
+import { mediaQuery, theme } from './styles'
 
 const headerImg = css`
   position: absolute;
   top: 100px;
   right: 0px;
-  padding-top: ${spacing.xl}px;
+  padding-top: ${theme.spacingXlarge}px;
 `
 
 const headerWidth = css`

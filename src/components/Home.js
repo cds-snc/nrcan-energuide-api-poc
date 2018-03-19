@@ -3,6 +3,7 @@ import { NavLink } from 'redux-first-router-link'
 import { connect } from 'react-redux'
 import { withApollo } from 'react-apollo'
 import { Trans } from 'lingui-react'
+import { css } from 'react-emotion'
 import { ThemeProvider } from 'emotion-theming'
 import {
   Header1,
@@ -15,9 +16,13 @@ import {
 } from './styles'
 import CircuitHouse from './CircuitHouse'
 
+const main = css`
+  margin-bottom: ${theme.spacingXlarge3}px;
+`
+
 const Home = () => (
   <ThemeProvider theme={theme}>
-    <main role="main">
+    <main role="main" className={main}>
       <IndexHeader>
         <HeaderContainer>
           <div id="page-header">
