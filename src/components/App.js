@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import AlphaBanner from './AlphaBanner'
 import FederalBanner from './FederalBanner'
 import Footer from './Footer'
-import { fontWeight, colours, spacing, fontSizes } from './styles'
+import { theme } from './styles'
 
 const catalogs = { en: unpackCatalog(en), fr: unpackCatalog(fr) }
 
@@ -23,10 +23,10 @@ injectGlobal`
 	html, body {
     padding: 0;
 		margin: 0;
-		background: ${colours.white};
+		background: ${theme.white};
 		min-height: 100%;
-    font-family: ${fontWeight.light}, sans serif;
-    font-size: ${fontSizes.md};
+    font-family: ${theme.weightMed}, sans serif;
+    font-size: ${theme.fontMedium};
 	}
 
   *,
@@ -41,36 +41,18 @@ injectGlobal`
     font-size: 1.4em;
   }
 
-	h1 {
-    font-family: ${fontWeight.bold}, sans serif;
-		font-size: ${fontSizes.xl};
-    margin-bottom: ${spacing.lg}px;
-	}
-
-	h2 {
-    font-family: ${fontWeight.bold}, sans serif;
-    font-size: ${fontSizes.lg};
-    margin-bottom: 0px;
-	}
-
-	h3 {
-    font-family: ${fontWeight.bold}, sans serif;
-    font-size: ${fontSizes.md};
-    margin-bottom: 0px;
-	}
-
   p, a {
 		line-height: 1.45;
 	}
 
   p {
-    margin-bottom: ${spacing.lg}px;
+    margin-bottom: ${theme.spacingLarge}px;
   }
 
 
 	a {
-		color: ${colours.blue};
-    padding-right: ${spacing.md}px;
+		color: ${theme.blue};
+    padding-right: ${theme.spacingMedium}px;
 	}
 
 	#info {
@@ -94,26 +76,21 @@ injectGlobal`
 		border: 3px solid #555;
 	}
 
-#page-body {
-    margin: 0px;
-    padding: ${spacing.xl}px ${spacing.xxxl}px;
-  }
-
   .bottom-link {
-    padding-left: ${spacing.xs}px;
+    padding-left: ${theme.spacingXsmall}px;
   }
 
 `
 
 const App = ({ lang }) => (
   <I18nProvider language={lang} catalogs={catalogs} development={dev}>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org/face/hk-grotesk"
+      type="text/css"
+    />
     <div>
-      <link
-        rel="stylesheet"
-        media="screen"
-        href="https://fontlibrary.org/face/hk-grotesk"
-        type="text/css"
-      />
       <AlphaBanner />
       <FederalBanner />
       <Switcher />

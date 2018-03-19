@@ -11,11 +11,11 @@ import { connect } from 'react-redux'
 import { compose, withApollo } from 'react-apollo'
 import { Trans } from 'lingui-react'
 import { css } from 'react-emotion'
-import { spacing } from './styles'
+import { Header1, Header3, PageBody, spacing } from './styles'
 
 const main = css`
   form {
-    margin-bottom: ${spacing.xl}px;
+    margin-bottom: ${spacing.xxl}px;
   }
 `
 
@@ -58,11 +58,11 @@ class Search extends Component {
           </NavLink>
         </Breadcrumbs>
 
-        <div id="page-body">
+        <PageBody>
           <header>
-            <h1>
+            <Header1>
               <Trans>Which parameter would you like to search by?</Trans>
-            </h1>
+            </Header1>
           </header>
           <p>
             <Trans>
@@ -105,15 +105,15 @@ class Search extends Component {
           </form>
 
           <aside>
-            <h3>
-              <Trans>To see all of the available data,&nbsp;</Trans>
+            <Header3>
+              <Trans>To see all of the available data,</Trans>
               <a href="https://github.com/cds-snc/nrcan_api">
                 <Trans>view the EnerGuide API documentation</Trans>
               </a>
-              <Trans>&nbsp;on GitHub.</Trans>
-            </h3>
+              <Trans>on GitHub.</Trans>
+            </Header3>
           </aside>
-        </div>
+        </PageBody>
       </main>
     )
   }

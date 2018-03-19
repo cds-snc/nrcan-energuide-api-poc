@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { css } from 'react-emotion'
 import { mediaQuery, spacing } from './styles'
 
@@ -31,9 +30,5 @@ const CircuitHouse = () => (
     />
   </div>
 )
-
-CircuitHouse.propTypes = {
-  width: PropTypes.string,
-}
 
 export default CircuitHouse
