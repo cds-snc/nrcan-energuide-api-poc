@@ -14,8 +14,10 @@ import { Radio } from './forms/MultipleChoice'
 import Button from './forms/Button'
 import DataTable from './DataTable'
 import { injectGlobal } from 'emotion'
-import { Header1, Header2, Header3, PageBody } from './styles'
+
 import { saveLocationData, deleteLocationData } from '../actions'
+import { Header1, Header2, LocationContainer } from './styles'
+import FooterLinks from './FooterLinks'
 
 injectGlobal`
 .fixedDataTableCellGroupLayout_cellGroup {
@@ -566,7 +568,7 @@ class SearchLocation extends Component {
           <Trans>Search by location</Trans>
         </Breadcrumbs>
 
-        <PageBody>
+        <LocationContainer>
           <header>
             <Header1 id="search-by-location-description">
               <Trans>Search by location</Trans>
@@ -663,17 +665,8 @@ class SearchLocation extends Component {
           </form>
 
           {data.length > 0 && <DataTable data={data} />}
-
-          <aside>
-            <Header3>
-              <Trans>To see all of the available data,&nbsp;</Trans>
-              <a href="https://github.com/cds-snc/nrcan_api">
-                <Trans>view the EnerGuide API documentation</Trans>
-              </a>
-              <Trans>&nbsp;on GitHub.</Trans>
-            </Header3>
-          </aside>
-        </PageBody>
+        </LocationContainer>
+        <FooterLinks />
       </main>
     )
   }
