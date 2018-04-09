@@ -103,24 +103,16 @@ function ShowFileID({ dwelling, fileId }) {
     let { ersRating = {} } = evaluation
     let { greenhouseGasEmissions = {} } = evaluation
 
-    /*evaluation['greenhouseGasEmissions'] =
-      evaluation['greenhouseGasEmissions'] === null
-        ? {}
-        : evaluation['greenhouseGasEmissions']
-    let { greenhouseGasEmissions = {} } = evaluation*/
-
     return {
       City: dwelling.city,
       'Year built': dwelling.yearBuilt,
       'House type': evaluation.houseType,
       'Evaluation type': evaluation.evaluationType,
       'ERS rating':
-        ersRating.measurement === null
-          ? ersRating.measurement
-          : ersRating.measurement + ' GJ',
+        ersRating.measurement === null ? null : ersRating.measurement + ' GJ',
       'Greenhouse Gas Emissions':
         greenhouseGasEmissions.measurement === null
-          ? greenhouseGasEmissions.measurement
+          ? null
           : greenhouseGasEmissions.measurement + ' tonnes/year',
     }
   }
