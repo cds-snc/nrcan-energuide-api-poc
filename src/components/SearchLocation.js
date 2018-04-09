@@ -465,61 +465,22 @@ class SearchLocation extends Component {
               }`)
         args.push('$location: String!')
         variables.location = value
-      } else {
+      } /*else {
         switch (value) {
-          case 'oil':
+          case 'single-detached':
             filters.push(`
               {
-                field: heatingEnergySourceEnglish
+                field: houseType
                 comparator: eq
-                value: $oil
+                value: $singleDetached
               }
           `)
-            args.push('$oil: String!')
-            variables.oil = 'Oil Space Heating'
-            clientFilter.heatingType = 'Oil Space Heating'
-            break
-          case 'electricity':
-            filters.push(`
-              {
-                field: heatingEnergySourceEnglish
-                comparator: eq
-                value: $electricity
-              }
-          `)
-            args.push('$electricity: String!')
-            variables.electricity = 'Electric Space Heating'
-            clientFilter.heatingType = 'Electric Space Heating'
-            break
-          case 'propane':
-            filters.push(`
-              {
-                field: heatingEnergySourceEnglish
-                comparator: eq
-                value: $propane
-              }
-          `)
-            args.push('$propane: String!')
-            variables.propane = 'Propane Space Heating'
-            clientFilter.heatingType = 'Propane Space Heating'
-            break
-          case 'natural-gas':
-            filters.push(`
-              {
-                field: heatingEnergySourceEnglish
-                comparator: eq
-                value: $naturalGas
-              }
-          `)
-            args.push('$naturalGas: String!')
-            variables.naturalGas = 'Natural Gas'
-            clientFilter.heatingType = 'Natural Gas'
-            break
-          case 'all':
-            // No need for a filter in this case.
+            args.push('$singleDetached: String!')
+            variables.singleDetached = 'Single detached'
+            clientFilter.houseType = 'Single detached'
             break
         }
-      }
+      }*/
     })
 
     let response = await client.query({
@@ -535,10 +496,10 @@ class SearchLocation extends Component {
               yearBuilt
               region
               forwardSortationArea
-                evaluations {
-                  ersRating
-                  heating {
-                  energySourceEnglish
+              evaluations {
+                houseType
+                eghRating {
+                  measurement
                 }
               }
             }
@@ -613,37 +574,43 @@ class SearchLocation extends Component {
                 </Header2>
               </legend>
               <p>
-                <Trans>Search by the type of energy source.</Trans>
+                <Trans>Search by the type of dwelling.</Trans>
               </p>
               <Radio
-                label={<Trans>Electricity</Trans>}
-                value="electricity"
-                name="heatingType"
-                id="energy-source-1"
+                label={<Trans>Single detached</Trans>}
+                value="single-detached"
+                name="houseType"
+                id="house-type-1"
               />
               <Radio
-                label={<Trans>Natural gas</Trans>}
-                value="natural-gas"
-                name="heatingType"
-                id="energy-source-3"
+                label={<Trans>Row house, end unit</Trans>}
+                value="row-house-end-unit"
+                name="houseType"
+                id="house-type-2"
               />
               <Radio
-                label={<Trans>Propane</Trans>}
-                value="propane"
-                name="heatingType"
-                id="energy-source-2"
+                label={<Trans>Row house, middle unit</Trans>}
+                value="row-house-middle-unit"
+                name="houseType"
+                id="house-type-3"
               />
               <Radio
-                label={<Trans>Oil</Trans>}
-                value="oil"
-                name="heatingType"
-                id="energy-source-0"
+                label={<Trans>Detached Duplex</Trans>}
+                value="detached-duplex"
+                name="houseType"
+                id="house-type-4"
+              />
+              <Radio
+                label={<Trans>Apartment</Trans>}
+                value="apartment"
+                name="houseType"
+                id="house-type-5"
               />
               <Radio
                 label={<Trans>All</Trans>}
-                value="all"
-                name="heatingType"
-                id="energy-source-3"
+                value="any"
+                name="houseType"
+                id="house-type-6"
               />
             </FieldSet>
             <Button disabled={pristine || submitting}>

@@ -7,23 +7,20 @@ export const setLanguage = lang => ({
 
 export const SAVE_LOCATION_LOOKUP_RESULTS = 'SAVE_LOCATION_LOOKUP_RESULTS'
 
-export const saveLocationData = (data, { heatingType }) => {
+export const saveLocationData = (data, { houseType }) => {
   return {
     type: SAVE_LOCATION_LOOKUP_RESULTS,
     data: data.reduce((output, datum) => {
       datum.evaluations.map(evaluation => {
-        if (
-          evaluation.heating.energySourceEnglish === heatingType ||
-          heatingType === 'all'
-        ) {
-          output.push({
-            yearBuilt: datum.yearBuilt,
-            region: datum.region,
-            forwardSortationArea: datum.forwardSortationArea,
-            rating: evaluation.ersRating,
-            heating: evaluation.heating.energySourceEnglish,
-          })
-        }
+        //if (evaluation.houseType === houseType || houseType === 'all') {
+        output.push({
+          yearBuilt: datum.yearBuilt,
+          region: datum.region,
+          forwardSortationArea: datum.forwardSortationArea,
+          //houseType: evaluation.houseType,
+          eghRating: evaluation.eghRating.measurement,
+        })
+        //}
       })
       return output
     }, []),
