@@ -12,15 +12,15 @@ export const saveLocationData = (data, { houseType }) => {
     type: SAVE_LOCATION_LOOKUP_RESULTS,
     data: data.reduce((output, datum) => {
       datum.evaluations.map(evaluation => {
-        //if (evaluation.houseType === houseType || houseType === 'all') {
-        output.push({
-          yearBuilt: datum.yearBuilt,
-          region: datum.region,
-          forwardSortationArea: datum.forwardSortationArea,
-          //houseType: evaluation.houseType,
-          eghRating: evaluation.eghRating.measurement,
-        })
-        //}
+        if (evaluation.houseType === houseType || houseType === 'all') {
+          output.push({
+            yearBuilt: datum.yearBuilt,
+            region: datum.region,
+            forwardSortationArea: datum.forwardSortationArea,
+            houseType: evaluation.houseType,
+            eghRating: evaluation.eghRating.measurement,
+          })
+        }
       })
       return output
     }, []),

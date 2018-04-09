@@ -59,7 +59,7 @@ class ResultsLocation extends Component {
           <header>
             <Header1>
               {`${data ? data.length : 0} `}
-              <Trans>evaluations found</Trans>
+              <Trans>results found</Trans>
             </Header1>
           </header>
           <NavLink to="/search-location">

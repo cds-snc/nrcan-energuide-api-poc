@@ -451,7 +451,7 @@ class SearchLocation extends Component {
     deleteFormData() // clear any previous data
     flash() // clear any previous flash messages
 
-    let clientFilter = { heatingType: 'all' }
+    let clientFilter = { houseType: 'all' }
     let args = []
     let filters = []
     let variables = {}
@@ -465,12 +465,12 @@ class SearchLocation extends Component {
               }`)
         args.push('$location: String!')
         variables.location = value
-      } /*else {
+      } else {
         switch (value) {
           case 'single-detached':
             filters.push(`
               {
-                field: houseType
+                field: evaluationHouseType
                 comparator: eq
                 value: $singleDetached
               }
@@ -479,8 +479,59 @@ class SearchLocation extends Component {
             variables.singleDetached = 'Single detached'
             clientFilter.houseType = 'Single detached'
             break
+          case 'detached-duplex':
+            filters.push(`
+                  {
+                    field: evaluationHouseType
+                    comparator: eq
+                    value: $detachedDuplex
+                  }
+              `)
+            args.push('$detachedDuplex: String!')
+            variables.detachedDuplex = 'Detached Duplex'
+            clientFilter.houseType = 'Detached Duplex'
+            break
+          case 'row-house-end':
+            filters.push(`
+                {
+                  field: evaluationHouseType
+                  comparator: eq
+                  value: $rowHouseEnd
+                }
+            `)
+            args.push('$rowHouseEnd: String!')
+            variables.rowHouseEnd = 'Row house, end unit'
+            clientFilter.houseType = 'Row house, end unit'
+            break
+          case 'row-house-middle':
+            filters.push(`
+                  {
+                    field: evaluationHouseType
+                    comparator: eq
+                    value: $rowHouseMiddle
+                  }
+              `)
+            args.push('$rowHouseMiddle: String!')
+            variables.rowHouseMiddle = 'Row house, middle unit'
+            clientFilter.houseType = 'Row house, middle unit'
+            break
+          case 'apartment':
+            filters.push(`
+                    {
+                      field: evaluationHouseType
+                      comparator: eq
+                      value: $apartment
+                    }
+                `)
+            args.push('$apartment: String!')
+            variables.apartment = 'Apartment'
+            clientFilter.houseType = 'Apartment'
+            break
+          case 'all':
+            // No need for a filter
+            break
         }
-      }*/
+      }
     })
 
     let response = await client.query({
@@ -508,7 +559,6 @@ class SearchLocation extends Component {
       `,
       variables,
     })
-
     if (response.errors) {
       flash(response.errors, 'error')
     } else {
@@ -583,20 +633,20 @@ class SearchLocation extends Component {
                 id="house-type-1"
               />
               <Radio
-                label={<Trans>Row house, end unit</Trans>}
-                value="row-house-end-unit"
+                label={<Trans>Detached Duplex</Trans>}
+                value="detached-duplex"
                 name="houseType"
                 id="house-type-2"
               />
               <Radio
-                label={<Trans>Row house, middle unit</Trans>}
-                value="row-house-middle-unit"
+                label={<Trans>Row house, end unit</Trans>}
+                value="row-house-end"
                 name="houseType"
                 id="house-type-3"
               />
               <Radio
-                label={<Trans>Detached Duplex</Trans>}
-                value="detached-duplex"
+                label={<Trans>Row house, middle unit</Trans>}
+                value="row-house-middle"
                 name="houseType"
                 id="house-type-4"
               />
@@ -608,7 +658,7 @@ class SearchLocation extends Component {
               />
               <Radio
                 label={<Trans>All</Trans>}
-                value="any"
+                value="all"
                 name="houseType"
                 id="house-type-6"
               />
@@ -646,7 +696,7 @@ export default compose(
   withApollo,
   reduxForm({
     form: 'searchByLocation',
-    initialValues: { heatingType: 'all' },
+    initialValues: { houseType: 'all' },
   }),
   connect(mapStateToProps, mapDispatchToProps),
 )(SearchLocation)
