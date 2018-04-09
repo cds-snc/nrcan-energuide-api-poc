@@ -99,24 +99,29 @@ function ShowFileID({ dwelling, fileId }) {
     let evaluation = JSON.parse(
       JSON.stringify(returnTheRightEvaluation(dwelling.evaluations)),
     )
-    evaluation['ersRating'] =
-      evaluation['ersRating'] === null ? {} : evaluation['ersRating']
-    let { ersRating: { measurement } = {} } = evaluation
 
-    evaluation['greenhouseGasEmissions'] =
+    let { ersRating = {} } = evaluation
+    let { greenhouseGasEmissions = {} } = evaluation
+
+    /*evaluation['greenhouseGasEmissions'] =
       evaluation['greenhouseGasEmissions'] === null
         ? {}
         : evaluation['greenhouseGasEmissions']
-    let { greenhouseGasEmissions = {} } = evaluation
+    let { greenhouseGasEmissions = {} } = evaluation*/
 
     return {
       City: dwelling.city,
       'Year built': dwelling.yearBuilt,
       'House type': evaluation.houseType,
       'Evaluation type': evaluation.evaluationType,
-      'ERS rating': measurement + ' GJ',
+      'ERS rating':
+        ersRating.measurement === null
+          ? ersRating.measurement
+          : ersRating.measurement + ' GJ',
       'Greenhouse Gas Emissions':
-        greenhouseGasEmissions.measurement + ' tonnes/year',
+        greenhouseGasEmissions.measurement === null
+          ? greenhouseGasEmissions.measurement
+          : greenhouseGasEmissions.measurement + ' tonnes/year',
     }
   }
 
